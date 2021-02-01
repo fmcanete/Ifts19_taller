@@ -14,7 +14,7 @@
 		$pagina= $_POST ['pagina'];
 		$precio = $_POST ['precio'];
 		$precioFinal = $_POST ['precioFinal'];
-		$reventa = $_POST ['reventa'];
+		//$reventa = $_POST ['reventa'];
 
 		$sql = "UPDATE pedidos SET 	idCampana='$idCampana',
 									fechaIni='$fechaIni',
@@ -27,7 +27,7 @@
 									pagina='$pagina',
 									precio='$precio',
 									precioFinal='$precioFinal',
-									reventa='$reventa'
+									reventa = 'n'
 				WHERE idPedido = '$idPedido'";
 
 		

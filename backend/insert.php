@@ -3,7 +3,7 @@
 
 	if (isset($_POST['insert'])) 
 		{
-			$idPedido = $_POST['idPedido'];
+
 			$idCampana = $_POST['idCampana'];
 			$fechaIni = $_POST['fechaIni'];
 			$fechaFin = $_POST ['fechaFin'];
@@ -15,10 +15,14 @@
 			$pagina= $_POST ['pagina'];
 			$precio = $_POST ['precio'];
 			$precioFinal = $_POST ['precioFinal'];
-			$reventa = $_POST ['reventa'];
+			//$reventa = $_POST ['reventa'];
 
 			$sql="INSERT INTO pedidos 
-				VALUES ('$idPedido', '$idCampana', '$fechaIni', '$fechaFin', '$cliente', '$producto', '$descripcion', '$codigo', '$unidades', '$pagina', '$precio', '$precioFinal', '$reventa')";
+				VALUES (null, '$idCampana', '$fechaIni', '$fechaFin', '$cliente', '$producto', '$descripcion', '$codigo', '$unidades', '$pagina', '$precio', '$precioFinal', 'n')";
+	
+	
+	
+	
 
 	
 			$ejecutar = $conexion ->query($sql);

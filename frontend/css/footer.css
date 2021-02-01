@@ -1,0 +1,13 @@
+#footer{
+    height: 100px;
+    /*height: 400px;*/
+    background-color: rgba(190, 38, 38, 0.2);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    left: 0%;
+    height: 81px;
+    background-color: #9ae6a7;
+}
+
+

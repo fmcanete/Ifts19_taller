@@ -16,7 +16,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 var app = {
     // Application Constructor
     initialize: function() {
@@ -48,19 +47,3 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
- 
- function getUrlVal() {
-    console.log("hola 1");
-    var val = [], hash;
-    var dir = window.location.href.slice(window.location.href.indexOf('?') +1).split('&');
-    console.log("hol fuera for");
-
-    for (var i = 0; i < dir.length; i++) {
-        hash = dir[i].split('=');
-        val.push(hash[0]);
-        val[hash[0]] = hash[1];
-        console.log("hol dentro for");
-    }
-
-    return val;
-}

@@ -1,9 +1,8 @@
-
 <?php
 	include "conexion.php";
 	
 	$data = array();
-	$sql = 'SELECT * FROM pedidos';
+	$sql = 'SELECT * FROM ventas';
 	$ejecutar = $conexion->query($sql);
 	
 	while($row = mysqli_fetch_object($ejecutar))

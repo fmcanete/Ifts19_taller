@@ -8,18 +8,16 @@
   		crossorigin="anonymous"></script>
   		<script src="https://kit.fontawesome.com/52cd366aa3.js" crossorigin="anonymous"></script>
         <script src="js/obtenerurl.js"></script>
-  		<i class="fas fa-robot"></i>
-
-
-
-
-        <title>Blank App</title>
+          <i class="fas fa-robot"></i>
+          <link rel="stylesheet" type="text/css" href ="css/index.css">
+<!--        <link rel="stylesheet" href="css/botones.css">  -->
+        <title>IFTS19</title>
     </head>
     <body>
 
     	<nav class="navbar navbar-dark bg-dark">
             <a href="index.html" class="btn btn-primary btn-sm"><i class="fas fa-home"></i></a>
-        <a href="select.html" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></a>    		
+            <a href="menuPedidos.html" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i></a>   		
     	</nav>
 
     	<div class="container">
@@ -29,15 +27,15 @@
     		
     		<form>
 
-<!--                <input type="hidden" id="idPedido">  -->
+                <input type="hidden" id="idPedido">
 
-    			 <div class="form-group">
+    			 <!--<div class="form-group">
                     <label>idPedido</label>
-                    <input type="number" class="form-control" id="idPedido">
-                </div>
+                    <input type="number" class="form-control" id="idPedido" disabled="true">
+                </div>-->
 
                 <div class="form-group">
-    				<label>idCampana</label>
+    				<label>N° Campaña</label>
     				<input type="number" class="form-control" id="idCampana">
     			</div>
 
@@ -51,10 +49,23 @@
     				<input type="date" class="form-control" id="fechaFin">
     			</div>
 
-				<div class="form-group">
+<!-- 				<div class="form-group">
     				<label>cliente</label>
     				<input type="text" class="form-control" id="cliente">
-    			</div>
+    			</div> -->
+
+
+
+                <div class="form-group">
+                    <label>Seleccione Cliente</label>
+                    <select id="cliente" class="lista_cliente">                    
+                        <option value="despliegue">despliegue</option>   
+                    </select>
+                </div>
+
+
+
+
 
     			<div class="form-group">
     				<label>Producto</label>
@@ -89,12 +100,26 @@
 				<div class="form-group">
     				<label>Precio Final</label>
     				<input type="number" class="form-control" id="precioFinal">
-    			</div>
+                </div>
 
-    			<div class="form-group">
-    				<label>Reventa</label>
-    				<input type="boolean" class="form-control" id="reventa">
-    			</div>
+<!--     			<div class="form-group">
+                    <label>Es Reventa?</label>
+                        <select id="reventa" class="lista_box">
+                            <option value="s">N</option>        
+                            <option value="n">S</option>                                                    
+                        </select>
+    			</div> -->
+                
+
+
+<!--   			<div class="form-group">
+                    <label>Reventa</label>
+
+                     <input type="text" id="reventa" value="n" required minlength="s" maxlength="n"> -->
+                 
+                    <!--<input type="boolean" class="form-control" id="reventa" placeholder="complete con 's' o 'n'"> -->
+
+		   <!--     </div> -->
 
     			<div class="form-group">
     				<button type="button" class="btn btn-primary" id="update">Actualizar</button>
@@ -122,7 +147,7 @@
         var pagina = decodeURI(getUrlVal()["pagina"]);
         var precio = decodeURI(getUrlVal()["precio"]);
         var precioFinal = decodeURI(getUrlVal()["precioFinal"]);
-        var reventa = decodeURI(getUrlVal()["reventa"]);
+        //var reventa = decodeURI(getUrlVal()["reventa"]);
 
 
         $("#idPedido").val(idPedido);
@@ -137,7 +162,9 @@
         $("#pagina").val(pagina);
         $("#precio").val(precio);
         $("#precioFinal").val(precioFinal);
-        $("#reventa").val(reventa);
+//        $("#reventa").val(reventa);
+
+
 
         $("#update").click(function(){
         var idPedido = $('#idPedido').val();
@@ -152,28 +179,40 @@
         var pagina = $('#pagina').val();
         var precio = $('#precio').val();
         var precioFinal = $('#precioFinal').val();
-        var reventa = $('#reventa').val();
+        //var reventa = $('#reventa').val();
+
         
-        var datos = "idPedido=" + idPedido + "&idCampana=" + idCampana + "&fechaIni=" + fechaIni + "&fechaFin=" + fechaFin + "&cliente=" + cliente + "&producto=" + producto + "&descripcion=" + descripcion + "&codigo=" + codigo + "&unidades=" + unidades +  "&pagina=" +  pagina +  "&precio=" + precio + "&precioFinal=" +  precioFinal +  "&reventa=" + reventa + "&update=";
+        
+        var datos = "idPedido=" + idPedido + "&idCampana=" + idCampana + "&fechaIni=" + fechaIni + "&fechaFin=" + fechaFin + "&cliente=" + cliente + "&producto=" + producto + "&descripcion=" + descripcion + "&codigo=" + codigo + "&unidades=" + unidades +  "&pagina=" +  pagina +  "&precio=" + precio + "&precioFinal=" +  precioFinal + "&update=";
 
             console.log(datos);
        
-                $.ajax({
-                    type: "POST",
-                    url: "https://fmcanete.000webhostapp.com//update.php",
-                    data: datos,
+            if (cliente != "despliegue" &
+                producto != "despliegue")
+                {
 
-                    success: function(data){
-                        if(data == "Correcto"){
-                            alert("Actualizado Correctamente");
-                            window.location.href = "select.html";
-                        }else{
-                            alert("Error");
+                
+
+                $.ajax({
+                        type: "POST",
+                        url: "https://fmcanete.000webhostapp.com//update.php",
+                        data: datos,
+                    
+                        success: function(data){
+                            if(data == "Correcto"){
+                                alert("Actualizado Correctamente");
+                                window.location.href = "menuPedidos.html";
+                            }else{
+                                alert("Error");
+                            }
                         }
-                    }
-                });
-           
+                    });
+                }
         });
+
+    
+
+        
             $("#delete").click(function() {
             var idPedido = $("#idPedido").val();
             var datos = "idPedido=" + idPedido + "&delete=";
@@ -185,7 +224,7 @@
 
                     if (data == "Correcto") {
                         alert("Eliminado correctamente");   
-                        window.location.href = "select.html";                     
+                        window.location.href = "menuPedidos.html";                     
                     
                     } else if (data == "Error") {
                         alert("Error");
@@ -194,5 +233,24 @@
             });
 
         });
+
+        var url = "https://fmcanete.000webhostapp.com/selectClientes.php";
+                $.getJSON(url,function(result)
+                {
+                    $.each(result, function(i, campo)    
+                    {
+                        var idCliente = campo.idCliente;                 
+                        var nombreCliente = campo.nombreCliente; 
+                        
+                        $("#cliente").prop('disabled', false);
+                        $("#cliente").append   (   "<option value="+nombreCliente+">"+nombreCliente+ "</option>")  ;
+                    })
+                });
+
+
+
+
+
+
     });
 </script> 

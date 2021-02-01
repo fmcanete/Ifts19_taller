@@ -1,10 +1,10 @@
 <?php
 	include "conexion.php";
 
-	if (isset($_GET['delete'])) {
-		$idPedido = $_GET['idPedido'];
+	if (isset($_GET['deleteProductos'])) {
+		$idProducto = $_GET['idProducto'];
 
-		$sql = "DELETE FROM pedidos WHERE idPedido = '$idPedido'";
+		$sql = "DELETE FROM productos WHERE idProducto = '$idProducto'";
 			
 		$ejecutar = $conexion ->query($sql);
 
