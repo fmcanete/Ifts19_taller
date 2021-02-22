@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  		crossorigin="anonymous"></script>
+  		<script src="https://kit.fontawesome.com/52cd366aa3.js" crossorigin="anonymous"></script>
+        <script src="js/obtenerurl.js"></script>
+          <i class="fas fa-robot"></i>
+          <link rel="stylesheet" type="text/css" href ="css/index.css">
+<!--        <link rel="stylesheet" href="css/botones.css">  -->
+        <title>IFTS19</title>
+    </head>
+    <body>
+
+    	<nav class="navbar navbar-dark bg-dark">
+            <a href="index.html" class="btn btn-primary btn-sm"><i class="fas fa-home"></i></a>
+            <p id="titulo_menu">Actualizar o borrar Pedidos</p>
+            <a href="menuPedidos.html" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i></a>   		
+    	</nav>
+
+    	<div class="container">
+    		<h6 class="d-flex justify-content-center">
+                <p id="titulo_"></p>
+    		</h6>
+    		
+    		<form>
+
+                <input type="hidden" id="idPedido">
+
+    			 <!--<div class="form-group">
+                    <label>idPedido</label>
+                    <input type="number" class="form-control" id="idPedido" disabled="true">
+                </div>-->
+
+                <div class="form-group">
+                    <label> <em> <strong>N° Campaña</strong> </em>    </label>
+    				<input type="number" class="form-control" id="idCampana">
+    			</div>
+
+    			<div class="form-group">
+                    <label> <em> <strong>Fecha inicio</strong> </em>    </label>
+    				<input type="date" class="form-control" id="fechaIni">
+    			</div>
+
+    			<div class="form-group">
+                    <label> <em> <strong>Fecha Fin</strong> </em>    </label>
+    				<label></label>
+    				<input type="date" class="form-control" id="fechaFin">
+    			</div>
+
+<!-- 				<div class="form-group">
+    				<label>cliente</label>
+    				<input type="text" class="form-control" id="cliente">
+    			</div> -->
+
+                <div class="form-group">
+                    <label> <em> <strong>Seleccione Cliente</strong> </em>    </label>
+                    <select id="cliente" class="lista_cliente">                    
+                        <option value="despliegue">despliegue</option>   
+                    </select>
+                </div>
+
+    			<div class="form-group">
+                    <label> <em> <strong>Producto</strong> </em>    </label>
+    				<input type="text" class="form-control" id="producto">
+    			</div>
+
+    			 <div class="form-group">
+                    <label> <em> <strong>Descripcion</strong> </em>    </label>
+    				<input type="text" class="form-control" id="descripcion">
+    			</div>
+    			
+				<div class="form-group">
+                    <label> <em> <strong> Codigo</strong> </em>    </label>
+    				<input type="text" class="form-control" id="codigo">
+    			</div>
+
+    			<div class="form-group">
+                    <label> <em> <strong>Unidades</strong> </em>    </label>
+    				<input type="number" class="form-control" id="unidades">
+    			</div>
+
+				<div class="form-group">
+                    <label> <em> <strong>Pagina</strong> </em>    </label>
+    				<input type="number" class="form-control" id="pagina">
+    			</div>    			
+
+    			<div class="form-group">
+                    <label> <em> <strong>Precio</strong> </em>    </label>
+    				<input type="number" class="form-control" id="precio">
+    			</div>
+    			
+				<div class="form-group">
+                    <label> <em> <strong>Precio Final</strong> </em>    </label>
+    				<input type="number" class="form-control" id="precioFinal">
+                </div>
+
+<!--     			<div class="form-group">
+                    <label>Es Reventa?</label>
+                        <select id="reventa" class="lista_box">
+                            <option value="s">N</option>        
+                            <option value="n">S</option>                                                    
+                        </select>
+    			</div> -->
+                
+
+
+<!--   			<div class="form-group">
+                    <label>Reventa</label>
+
+                     <input type="text" id="reventa" value="n" required minlength="s" maxlength="n"> -->
+                 
+                    <!--<input type="boolean" class="form-control" id="reventa" placeholder="complete con 's' o 'n'"> -->
+
+		   <!--     </div> -->
+
+                <br>
+
+    			<div class="form-group">
+    				<button type="button" class="btn btn-primary" id="update">Actualizar</button>
+                    <button type="button" class="btn btn-danger" id="delete">Eliminar</button>
+    			</div>
+    		</form>
+    	</div>
+
+
+<!--        <script type="text/javascript" src="cordova.js"></script>  -->
+    </body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        var idPedido = decodeURI(getUrlVal()["idPedido"]);
+        var idCampana = decodeURI(getUrlVal()["idCampana"]);
+        var fechaIni = decodeURI(getUrlVal()["fechaIni"]);
+        var fechaFin = decodeURI(getUrlVal()["fechaFin"]);
+        var cliente= decodeURI(getUrlVal()["cliente"]);
+        var producto = decodeURI(getUrlVal()["producto"]);
+        var descripcion = decodeURI(getUrlVal()["descripcion"]);
+        var codigo = decodeURI(getUrlVal()["codigo"]);
+        var unidades = decodeURI(getUrlVal()["unidades"]);
+        var pagina = decodeURI(getUrlVal()["pagina"]);
+        var precio = decodeURI(getUrlVal()["precio"]);
+        var precioFinal = decodeURI(getUrlVal()["precioFinal"]);
+        //var reventa = decodeURI(getUrlVal()["reventa"]);
+
+
+        $("#idPedido").val(idPedido);
+        $("#idCampana").val(idCampana);
+        $("#fechaIni").val(fechaIni);
+        $("#fechaFin").val(fechaFin);
+        $("#cliente").val(cliente);
+        $("#producto").val(producto);
+        $("#descripcion").val(descripcion);
+        $("#codigo").val(codigo);
+        $("#unidades").val(unidades);
+        $("#pagina").val(pagina);
+        $("#precio").val(precio);
+        $("#precioFinal").val(precioFinal);
+//        $("#reventa").val(reventa);
+
+
+
+        $("#update").click(function(){
+        var idPedido = $('#idPedido').val();
+        var idCampana = $('#idCampana').val();
+        var fechaIni =  $('#fechaIni').val();
+        var fechaFin =  $('#fechaFin').val();
+        var cliente = $('#cliente option:selected').text();
+        //var cliente = $('#cliente').val();
+        var producto = $('#producto').val();
+        var descripcion = $('#descripcion').val();
+        var codigo = $('#codigo').val();
+        var unidades = $('#unidades').val();
+        var pagina = $('#pagina').val();
+        var precio = $('#precio').val();
+        var precioFinal = $('#precioFinal').val();
+        //var reventa = $('#reventa').val();
+
+        
+        
+        var datos = "idPedido=" + idPedido + "&idCampana=" + idCampana + "&fechaIni=" + fechaIni + "&fechaFin=" + fechaFin + "&cliente=" + cliente + "&producto=" + producto + "&descripcion=" + descripcion + "&codigo=" + codigo + "&unidades=" + unidades +  "&pagina=" +  pagina +  "&precio=" + precio + "&precioFinal=" +  precioFinal + "&update=";
+
+            console.log(datos);
+       
+            if (cliente != "despliegue" &
+                producto != "despliegue")
+                {
+
+                
+
+                $.ajax({
+                        type: "POST",
+                        url: "https://fmcanete.000webhostapp.com//update.php",
+                        data: datos,
+                    
+                        success: function(data){
+                            if(data == "Correcto"){
+                                alert("Actualizado Correctamente");
+                                window.location.href = "menuPedidos.html";
+                            }else{
+                                alert("Error");
+                            }
+                        }
+                    });
+                }
+        });
+
+    
+
+        
+            $("#delete").click(function() {
+            var idPedido = $("#idPedido").val();
+            var datos = "idPedido=" + idPedido + "&delete=";
+            $.ajax({
+                type: "GET",
+                url: "https://fmcanete.000webhostapp.com//delete.php",
+                data: datos,
+                success: function(data) {
+
+                    if (data == "Correcto") {
+                        alert("Eliminado correctamente");   
+                        window.location.href = "menuPedidos.html";                     
+                    
+                    } else if (data == "Error") {
+                        alert("Error");
+                    }
+                }
+            });
+
+        });
+
+        var url = "https://fmcanete.000webhostapp.com/selectClientes.php";
+                $.getJSON(url,function(result)
+                {
+                    $.each(result, function(i, campo)    
+                    {
+                        var idCliente = campo.idCliente;                 
+                        var nombreCliente = campo.nombreCliente; 
+                        
+                        $("#cliente").prop('disabled', false);
+                        $("#cliente").append   (   "<option value="+nombreCliente+">"+nombreCliente+ "</option>")  ;
+                    })
+                });
+
+
+
+
+
+
+    });
+</script> 
