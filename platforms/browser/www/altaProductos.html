@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  		crossorigin="anonymous"></script>
+  		<script src="https://kit.fontawesome.com/52cd366aa3.js" crossorigin="anonymous"></script>
+        <script src ="js/index.js"></script>
+        <link rel="stylesheet" type="text/css" href ="css/index.css">
+        <!--        <link rel="stylesheet" href="css/botones.css">  -->
+
+        <i class="fas fa-robot"></i>
+
+        <title>IFTS19</title>
+    </head>
+    <body>
+
+    	<nav class="navbar navbar-dark bg-dark">
+            <a href="index.html" class="btn btn-primary btn-sm"><i class="fas fa-home"></i></a>
+            <p id="titulo_menu">Alta de Productos</p>
+            <a href="menuProductos.html" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i></a>
+    	</nav>
+
+    	<div class="container">
+    		<h6 class="d-flex justify-content-center">
+                <p id="titulo_"></p>
+    		</h6>
+    		
+    		<form>
+
+<!--                <div class="form-group">
+                    <label>idProducto</label>
+                    <input type="number" class="form-control" id="idProducto">
+                </div>
+-->
+                <div class="form-group">
+                    <label> <em> <strong>Producto</strong> </em>    </label>
+    				<input type="text" class="form-control" id="producto">
+    			</div>
+
+    			 <div class="form-group">
+                    <label> <em> <strong>Descripcion</strong> </em>    </label>
+    				<input type="text" class="form-control" id="descripcion">
+    			</div>
+    			
+				<div class="form-group">
+    				<label> <em> <strong> Codigo </strong> </em>    </label>
+    				<input type="text" class="form-control" id="codigo">
+    			</div>
+
+    			<div class="form-group">
+                    <label> <em> <strong>N° Campaña</strong> </em>    </label>
+    				<input type="number" class="form-control" id="idCampana">
+                </div>
+
+                <div class="form-group">
+                    <label> <em> <strong>Fecha de adquisición</strong> </em>    </label>
+    				<input type="date" class="form-control" id="fechaFin">
+                </div>
+
+                <div class="form-group">
+                    <label> <em> <strong>Precio precioUnitario</strong> </em>    </label>
+    				<input type="number" class="form-control" id="precioUnitario">
+                </div>
+                
+                <div class="form-group">
+                    <label> <em> <strong>Precio Venta</strong> </em>    </label>
+    				<input type="number" class="form-control" id="precioVenta">
+                </div>
+                
+                <br>
+                
+    			<div class="form-group">
+    				<button type="button" class="btn btn-primary" id="insertProductos">Guardar</button>
+    			</div>
+    		</form>
+    	</div>
+
+
+    </body>
+
+
+
+
+
+
+</html>
+
+<script>
+    $(document).ready(function()
+        {
+            $("#insertProductos").click(function() 
+                {
+//                    var idProducto = $('#idProducto').val();
+                    var producto = $('#producto').val();
+                    var descripcion = $('#descripcion').val();
+                    var codigo = $('#codigo').val();
+                    var idCampana = $('#idCampana').val();
+                    var fechaFin = $('#fechaFin').val();
+                    var precioUnitario = $('#precioUnitario').val();
+                    var precioVenta = $('#precioVenta').val();
+
+                    var datos = "producto=" + producto + "&descripcion=" + descripcion + "&codigo=" + codigo + "&idCampana=" + idCampana + "&fechaFin=" + fechaFin +  "&precioUnitario=" + precioUnitario +  "&precioVenta=" + precioVenta + "&insertProductos=";                        
+
+
+                        if ($.trim(producto).length > 0 &
+                            $.trim(producto).length > 0 &
+                            $.trim(descripcion).length > 0 &
+                            $.trim(codigo).length > 0 &
+                            $.trim(idCampana).length > 0 &
+                            $.trim(fechaFin).length > 0 &
+                            $.trim(precioUnitario).length > 0 &
+                            $.trim(precioVenta).length > 0 )
+                            {
+                                $.ajax(
+                                {
+                                    type: "POST",
+                                    url: "https://qainprogress.000webhostapp.com/insertProductos.php",
+                                    data: datos,
+                                    success: function(data)
+                                    {
+                                    console.log(data);
+                                    if(data == "Correcto")
+                                        {
+                                            alert("Guardado Correctamente");
+                                            window.location.href = "menuProductos.html";
+                                        } else 
+                                        {
+                                        alert("Error al Guardar");
+                                        console.log(datos);
+                                        }
+                                    }
+                                });
+                            }
+                });
+        });
+    
+
+
+</script>
