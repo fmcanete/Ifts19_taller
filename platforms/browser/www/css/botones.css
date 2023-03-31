@@ -1,0 +1,96 @@
+#button_A {
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 5px;
+    text-decoration: none;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    text-shadow: 1px 1px 3px #666666;
+    border: solid #2b292a 1px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#35242c), to(#754b5e));
+    background: -moz-linear-gradient(top, #363536, #2c2a2b);
+}
+
+#button_B {
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 11px;
+    padding: 5px;
+    text-decoration: none;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 1px 3px #666666;
+    -moz-box-shadow: 0px 1px 3px #666666;
+    box-shadow: 0px 1px 3px #666666;
+    text-shadow: 1px 1px 3px #666666;
+    border: solid #2b292a 1px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#773152), to(#3d1326));
+    background: -moz-linear-gradient(top, #363536, #2c2a2b);
+}
+
+
+
+  input[type=number] {
+    border: 1px dotted rgb(23, 23, 24);
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0px 1px 3px #e0cece;
+    text-shadow: 1px 1px 3px #b39e9e;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e0cece), to(#b39e9e));
+    position:relative;    
+    -webkit-appearance: none;
+    display: inline-block;
+    text-decoration-color: #b39e9e;
+    /*border-bottom: 1px dashed #0b441b;*/
+    text-decoration: solid;
+    font-weight: bold;
+    text-align: center;
+    width: 112px;
+  }
+
+  input[type=text]{
+    border: 1px dotted rgb(23, 23, 24);
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0px 1px 3px #e0cece;
+    text-shadow: 1px 1px 3px #b39e9e;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#139150), to(#97d5b6));
+    position:relative;    
+    -webkit-appearance: none;
+    display: inline-block;
+    text-decoration-color: ivory;
+    border-bottom: 1px dashed #CDCDCD;
+    text-decoration: solid;
+    font-weight: bold;
+    text-align: center;
+    width: 112px;
+  }
+
+
+#boton_menu
+{
+      text-decoration: none;
+      margin-left: auto;
+
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 15px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      text-transform:uppercase;
+      padding-left:10px;
+      padding-right: 10px;
+      font-weight: 1000;
+      font-size: 15px;
+      color: rgb(184, 240, 203);
+      /*color: rgb(230, 204, 204);*/
+      background-color: #1a1717;
+      display:flex;
+      border-radius: 10px;
+}
